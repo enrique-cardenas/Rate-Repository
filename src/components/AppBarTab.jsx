@@ -9,14 +9,12 @@ const styles = StyleSheet.create({
     fontWeight: theme.fontWeights.bold,
     padding: 20
   }
-  
-  
 });
 
-const AppBarTab = ({ text }) => {
+const AppBarTab = ({ text, ...props }) => {
   return (
-    <TouchableWithoutFeedback>
-      <Text style={styles.text}>{text}</Text>
+    <TouchableWithoutFeedback onPress={props.onPress}>
+      <Text style={styles.text} >{text}</Text>
     </TouchableWithoutFeedback>
   );
 };
