@@ -35,23 +35,27 @@ const styles = StyleSheet.create({
 
 });
 
-const RepositoryItem = (props) => (
-  <View style={styles.container}>
-    <View style={styles.subContainer}>
-      <Image style={styles.image} source={{ uri: props.ownerAvatarUrl }} />
-      <View style={styles.topSubContainer}>
-        <Text style={styles.text} fontWeight='bold' >{props.fullName}</Text>
-        <Text style={styles.text} >{props.description}</Text>
-        <Tag text={props.language}/>
+const RepositoryItem = (props) => {
+  const fullName = props.ownerName + '/' + props.name;
+  
+  return (
+    <View style={styles.container}>
+      <View style={styles.subContainer}>
+        <Image style={styles.image} source={{ uri: props.ownerAvatarUrl }} />
+        <View style={styles.topSubContainer}>
+          <Text style={styles.text} fontWeight='bold' >{fullName}</Text>
+          <Text style={styles.text} >{props.description}</Text>
+          <Tag text={props.language}/>
+        </View>
+      </View>
+      <View style={[styles.subContainer, styles.botSubContainer]}>
+        <NumberAndText number={props.stargazersCount} text='Stars'/>
+        <NumberAndText number={props.forksCount} text='Forks'/>
+        <NumberAndText number={props.reviewCount} text='Reviews'/>
+        <NumberAndText number={props.ratingAverage} text='Rating'/>
       </View>
     </View>
-    <View style={[styles.subContainer, styles.botSubContainer]}>
-      <NumberAndText number={props.stargazersCount} text='Stars'/>
-      <NumberAndText number={props.forksCount} text='Forks'/>
-      <NumberAndText number={props.reviewCount} text='Reviews'/>
-      <NumberAndText number={props.ratingAverage} text='Rating'/>
-    </View>
-  </View>
-);
+  );
+};
 
 export default RepositoryItem;
